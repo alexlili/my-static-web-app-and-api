@@ -8,5 +8,8 @@
   },
   "devDependencies": {
     "@azure/functions": "^4.3.0"
+  },
+  "dependencies": {
+    "azure-functions-core-tools": "^2.7.3188"
   }
 }
