@@ -3,11 +3,11 @@ name: Azure Static Web Apps CI/CD
 on:
   push:
     branches:
-      - api
+      - main
   pull_request:
     types: [opened, synchronize, reopened, closed]
     branches:
-      - api
+      - main
 
 jobs:
   build_and_deploy_job:
@@ -15,23 +15,23 @@ jobs:
     runs-on: ubuntu-latest
     name: Build and Deploy Job
     env:
-        NODE_VERSION: 12.22.12 # 设置 Node.js 版本为 12
+      NODE_VERSION: 12.22.12 # 设置 Node.js 版本为 16
     steps:
       - uses: actions/checkout@v3
         with:
           submodules: true
           lfs: false
-          
+
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: ${{ env.NODE_VERSION }} # 这里指定你需要的 Node.js 版本    
+          node-version: ${{ env.NODE_VERSION }} # 这里指定你需要的 Node.js 版本
 
       - name: Build And Deploy
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
         with:
-          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_BRAVE_STONE_0AE96221E }}
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_POLITE_MUD_00DA9601E }}
           repo_token: ${{ secrets.GITHUB_TOKEN }} # Used for Github integrations (i.e. PR comments)
           action: "upload"
           ###### Repository/Build Configurations - These values can be configured to match your app requirements. ######
@@ -50,5 +50,5 @@ jobs:
         id: closepullrequest
         uses: Azure/static-web-apps-deploy@v1
         with:
-          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_BRAVE_STONE_0AE96221E }}
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_POLITE_MUD_00DA9601E }}
           action: "close"
